@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.net.URLDecoder;
 
 import redis.clients.jedis.Jedis;
 
@@ -68,13 +69,30 @@ public class WikiSearch {
 		
 		List<Entry<String, Integer>> entries = sort();
 		for (Entry<String, Integer> entry: entries) {
-			buf.append(entry+"<br/>");
+			buf.append("<a href=\""+entry.getKey()+"\">"+getTitle(entry.getKey())+"<br/>");
 		}
 		if(entries.size()==0)
 		{
 			buf.append("Query not in index.");
 		}
 		return buf.toString();
+	}
+	
+	/*
+	 * Given a wiki url, gets the title
+	 * 
+	 * @param url
+	 * @ return title
+	 */
+	private String getTitle(String url) {
+		String[] urlSections = url.split("/");
+		String decoded = URLDecoder.decode(urlSections[urlSections.length - 1]);
+		String[] titleSections = decoded.split("_");
+		String title = titleSections[0];
+		for (int i = 1; i < titleSections.length; i++) {
+			title += " " + titleSections[i];
+		}
+		return title;
 	}
 	
 	/**

@@ -4,10 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hello</h1>
+
+<form action="/wikisearch" method="get">
+	<p>
+		Search: <input type="text" name="term" />
+		<input type="submit"> <br />
+	</p>
+</form>
+
 <h2>
 	<% String results = (String) request.getAttribute("resultsId"); %>
 	<%=results%>
