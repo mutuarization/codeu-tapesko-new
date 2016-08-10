@@ -29,6 +29,8 @@ public class WikiSearchBetterServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String term = req.getParameter("term"); 
+		String results;
+		
 		int resultsLimit = 30;
 		
 		// make a JedisIndex
@@ -37,7 +39,13 @@ public class WikiSearchBetterServlet extends HttpServlet {
 		//Assumption --> indexing already done.
 		// search for a query
 		WikiSearchBetter search = new WikiSearchBetter(index);
-		String results = search.toString(search.searchTopK(term, resultsLimit), term);
+		
+		// set the results string
+		if (term.equals("")) {
+			results = "Your search was empty<br/>We're not sure what you seek, so<br/>Here is a haiku<br/>:)";
+		} else {
+			results = search.toString(search.searchTopK(term, resultsLimit), term);
+		}
 		
 		req.setAttribute("resultsId", results); // add to request
 		//resp.setContentType("text/plain");
