@@ -4,14 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Search Tapesko</title>
 </head>
 <body>
-<h1>Hello</h1>
-<h2>
+    <a href="/"><img class="home" src="resources/tapeskoLogo.png"></a>
+    <form action="/wikisearch" method="get">
+	  <input class="home" type="text" name="term" placeholder="Search for something..."/>
+	  <input class="home" type="submit" value="Search" ><br />
+	</form>
+
+<p>
 	<% String results = (String) request.getAttribute("resultsId"); %>
 	<%=results%>
-</h2>
+</p>
 
 </body>
 </html>

@@ -1,0 +1,93 @@
+body {
+    background-color: lightblue;
+    font-family: 'Cardo', Georgia, Times, serif;
+    position: relative;
+}
+
+h1 {
+    color: navy;
+    text-align: center;
+    font-family: 'Allan', Helvetica, Arial, sans-serif;
+}
+
+a:link {
+    text-decoration: none;
+    color: #1b96fe;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #e58756;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #025ca8;
+}
+
+a:active {
+    text-decoration: underline;
+    color: #025ca8;
+}
+
+p {
+	margin-left: 2em;
+	font-size: 1.5em;
+}
+
+div.verticalcenter {
+	/* width: 400px;
+	height: 300px; */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+img.index {
+    width: 380px;
+    margin-top: 1em;
+    margin-bottom: .7em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+img.home {
+    width: 250px;
+    margin-top: .4em;
+    margin-bottom: .2em;
+    margin-left: auto;
+    margin-right: auto;
+	display: block;
+}
+
+form {
+  width: 400px;
+  display: flex;
+  margin: auto;
+}
+
+input[type="text"] {
+    display: block;
+    width: auto;
+    flex: 5;
+}
+
+input[type="submit"] {
+	display: block;
+	width: auto;
+	flex: 1;
+}
+
+input.index {
+	margin: 2px;
+  	height: 1.7em;
+}
+
+input.home {
+  margin: 2px;
+  height: 1.2em;
+}
