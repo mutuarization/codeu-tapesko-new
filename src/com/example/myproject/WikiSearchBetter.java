@@ -1,6 +1,7 @@
 package com.example.myproject;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -36,14 +37,14 @@ public class WikiSearchBetter {
 			}
 		}
 
-		//Normalize scores
-		for(String url: length.keySet()) {
-			double len = Math.sqrt(length.get(url));
-			if(len != 0) {
-				scores.put(url, scores.get(url) / len);
-			}
-			
-		}
+//		//Normalize scores
+//		for(String url: length.keySet()) {
+//			double len = Math.sqrt(length.get(url));
+//			if(len != 0) {
+//				scores.put(url, scores.get(url) / len);
+//			}
+//			
+//		}
 
 		List<String> topK = new ArrayList<String>();
 		for(Entry<String, Double> entry: sort(scores)) {
@@ -87,6 +88,44 @@ public class WikiSearchBetter {
         	}
         });
 		return entries;
+	}
+	
+	/**
+	 * Converts the contents to a String.
+	 * 
+	 * @param map
+	 */
+	public String toString(List<String> urls, String term) {
+		StringBuffer buf = new StringBuffer();
+		int resultsLimit = 30;
+		int resultsShown =  (urls.size() > resultsLimit)? resultsLimit : urls.size() ;
+		
+		buf.append("Showing top " + resultsShown + " of " + urls.size() + " results for \""+ term +"\".<br/><br/>");
+		for (String url: urls) {
+			buf.append("<a target=\"_blank\" href=\""+url+"\">"+getTitle(url)+"<br/>");
+		}
+		if(urls.size()==0)
+		{
+			buf.append("Query not in index.");
+		}
+		return buf.toString();
+	}
+	
+	/*
+	 * Given a wiki url, gets the title
+	 * 
+	 * @param url
+	 * @ return title
+	 */
+	private String getTitle(String url) {
+		String[] urlSections = url.split("/");
+		String decoded = URLDecoder.decode(urlSections[urlSections.length - 1]);
+		String[] titleSections = decoded.split("_");
+		String title = titleSections[0];
+		for (int i = 1; i < titleSections.length; i++) {
+			title += " " + titleSections[i];
+		}
+		return title;
 	}
 	
 	public static void main(String[] args) throws IOException {

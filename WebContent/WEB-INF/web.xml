@@ -15,18 +15,28 @@
     <servlet-name>CodeuTeamTapeskoServlet</servlet-name>
     <servlet-class>com.example.myproject.CodeuTeamTapeskoServlet</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>WikiSearchServlet</display-name>
     <servlet-name>WikiSearchServlet</servlet-name>
     <servlet-class>com.example.myproject.WikiSearchServlet</servlet-class>
   </servlet>
   <servlet-mapping>
+    <servlet-name>WikiSearchServlet</servlet-name>
+    <url-pattern>/WikiSearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>CodeuTeamTapeskoServlet</servlet-name>
     <url-pattern>/codeu_team_tapesko</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WikiSearchBetterServlet</display-name>
+    <servlet-name>WikiSearchBetterServlet</servlet-name>
+    <servlet-class>com.example.myproject.WikiSearchBetterServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
-    <servlet-name>WikiSearchServlet</servlet-name>
+    <servlet-name>WikiSearchBetterServlet</servlet-name>
     <url-pattern>/wikisearch</url-pattern>
   </servlet-mapping>
 </web-app>
