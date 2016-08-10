@@ -10,22 +10,18 @@
   <head>
   	<link rel="stylesheet" type="text/css" href="style.css">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Hello App Engine</title>
+    <title>Search Tapesko</title>
   </head>
 
   <body>
-    <h1>Hello App!!!!</h1>
-	
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-    </table>
-    <form action="/wikisearch" method="get">
-		<p>
-			Search: <input type="text" name="term" />
-			<input type="submit"> <br />
-		</p>
-	</form>
+  
+	  <div class="verticalcenter">
+	  	<a href="/"><img class="index" src="resources/tapeskoLogo.png"></a>
+	    <form action="/wikisearch" method="get">
+		  <input class="index" type="text" name="term" placeholder="Search for something..."/>
+		  <input class="index" type="submit" value="Search" ><br />
+		</form>
+	  </div>
+   
   </body>
 </html>

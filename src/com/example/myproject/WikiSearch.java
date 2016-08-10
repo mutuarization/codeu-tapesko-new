@@ -66,10 +66,23 @@ public class WikiSearch {
 	 */
 	public String toString() {
 		StringBuffer buf = new StringBuffer();
+		int resultsCount = 0;
+		int resultsLimit = 30;
+		int resultsShown;
 		
 		List<Entry<String, Integer>> entries = sort();
+		if (entries.size() >= resultsLimit) {
+			resultsShown = 30;
+		} else {
+			resultsShown = entries.size();
+		}
+		buf.append("Showing top " + resultsShown + " of " + entries.size() + " results.<br/><br/>");
 		for (Entry<String, Integer> entry: entries) {
-			buf.append("<a href=\""+entry.getKey()+"\">"+getTitle(entry.getKey())+"<br/>");
+			buf.append("<a target=\"_blank\" href=\""+entry.getKey()+"\">"+getTitle(entry.getKey())+"<br/>");
+			resultsCount++;
+			if (resultsCount >= resultsLimit){
+				break;
+			}
 		}
 		if(entries.size()==0)
 		{
